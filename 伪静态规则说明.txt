@@ -1,0 +1,30 @@
+
+如果是nginx配置环境，请将下列代码填写到自定义伪静态规则。
+填写的server{}里面
+
+if (!-e $request_filename) { 
+
+        rewrite  ^(.*)$  /index.php?s=$1  last; 
+
+        break;   
+
+    } 
+
+
+如果是apache
+用的是根目录那个.htaccess
+
+iis6
+根目录的http.ini
+
+iis7
+把.htaccess里面的内容换成
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>

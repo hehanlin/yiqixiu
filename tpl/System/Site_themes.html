@@ -1,0 +1,56 @@
+<include file="Public:header" />
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>站点设置 >> 基本设置 >>前台模板选择 </h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+            <include file="Site:public" />
+			
+            <form id="myform" action="{Wesambo::U('Site/qianmoban_up')}" method="post">
+			<tr> 
+				<td  height="48" align="right"><strong>选择模板：</strong></td>
+				<td> <select name="beer" id="beer" onChange="setBeerIcon();">
+				<option value="wesambo">微上宝风格</option>
+				<option value="summer20140619">summer风格</option>
+
+			</select>
+    </td>
+      <td width="82%"  align="right"></td>
+    
+    <tr> 
+      <td height="48" colspan="2">
+		  <div id="addkey"></div>
+		  <div style="padding-left:100px;">
+			<input type="submit" value="保存设置" />
+		  </div>
+	  </td>
+    </tr>
+	</form>        
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+<include file="Public:footer" />

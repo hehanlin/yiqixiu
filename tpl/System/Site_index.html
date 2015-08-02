@@ -1,0 +1,285 @@
+
+<include file="Public:header" />
+<style type="text/css">
+  
+</style>
+<script>
+  KindEditor.ready(function(K){
+    var editor = K.editor({
+      allowFileManager:true
+    });
+	
+	 K('#erweima_upload').click(function() {
+      editor.loadPlugin('image', function() {
+        editor.plugin.imageDialog({
+          fileUrl : K('#bg_pic2').val(),
+          clickFn : function(url, title) {
+            if(url.indexOf("http") > -1){
+              K('#bg_pic2').val(url);
+            }else{
+              K('#bg_pic2').val("{Wesambo::C('site_url')}"+url);
+            }
+            editor.hideDialog();
+          }
+        });
+      });
+    });
+	
+    
+  });
+  
+   KindEditor.ready(function(K){
+    var editor = K.editor({
+      allowFileManager:true
+    });
+	
+	 K('#homeurl_upload').click(function() {
+      editor.loadPlugin('image', function() {
+        editor.plugin.imageDialog({
+          fileUrl : K('#bg_pic').val(),
+          clickFn : function(url, title) {
+            if(url.indexOf("http") > -1){
+              K('#bg_pic').val(url);
+            }else{
+              K('#bg_pic').val("{Wesambo::C('site_url')}"+url);
+            }
+            editor.hideDialog();
+          }
+        });
+      });
+    });
+	
+    
+  });
+  
+</script>
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>站点设置 >> 基本设置 >> 基本信息设置</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+            <include file="Site:public" />
+            <form id="myform" action="{Wesambo::U('Site/insert')}" method="post">
+            <table class="table table-striped table-bordered" style="margin-top:10px;" id="set_table">
+
+                  <tr>
+                    <td><strong>网站名称：</strong></td>
+                    <td>
+                      <input type="text" name="site_name" value="{Wesambo::C('site_name')}"  />                
+                      <span>&nbsp;&nbsp;例：微上宝微信平台</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><strong>网站标题：</strong></td>
+                    <td>
+                      <input type="text" name="site_title" value="{Wesambo::C('site_title')}" size="45" />                
+                      <span>&nbsp;&nbsp;一般不超过80个字符</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong>网站地址：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="site_url" value="{Wesambo::C('site_url')}" size="45" />                
+                      <span>&nbsp;&nbsp;例:http://new.wesambo.com</span>
+                    </td>
+                  </tr>
+
+				    <tr>
+                    <td>
+                      <strong>网站二维码上传：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="site_qrcode" value="{Wesambo::C('site_qrcode')}" id="bg_pic2" class="px" readonly="readonly">                
+                      <span class="ke-button-common" id="erweima_upload" >
+                        <input type="button" class="btn-info" value="Upload">
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong>网站LOGO上传：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="site_logo" value="{Wesambo::C('site_logo')}" id="bg_pic" class="px" readonly="readonly">                
+                      <span class="ke-button-common" id="homeurl_upload" >
+                        <input type="button" class="btn-info" value="Upload">
+                      </span>
+                    </td>
+                  </tr>
+				  
+				 
+
+             
+                  <tr>
+                    <td>
+                      <strong>图灵机器人API接口:</strong>
+                    </td>
+                    <td>
+					<!--微上宝科技独家制作-->
+                      <input type="text" name="site_chat" value="{Wesambo::C('site_chat')}" size="45" />                
+                      <span>&nbsp;&nbsp;注：（聊天功能）例：3f640d8353d6e9a1a85064bf834d67fe</span></p>
+					  需要自己调教机器人或者想用自己个人的接口者可到<a href="http://www.tuling123.com/openapi/" target='blank'>&nbsp图灵机器人官网</a>&nbsp申请,得到key填上即可。
+					  
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong>审核用户：</strong>
+                    </td>
+                    <td>
+                      <input type="radio" name="ischeckuser" value="true" <php>if(C('ischeckuser')==='true')echo checked;</php>/>注册时无需要审核
+                      <input type="radio" name="ischeckuser" value="false" <php>if(C('ischeckuser')==='false')echo checked;</php>/>注册时需要审核
+                    </td>
+                  </tr>
+                  
+                  
+                  <tr> 
+				    <td>
+				      <strong>新用户默认组：</strong>
+				    </td>
+					<td>
+					   <select name="reg_groupid">
+					   <volist name="groups" id="g">
+					    <option value="{Wesambo:$g.id}" <if condition="C('reg_groupid') eq $g['id']">selected</if>>{Wesambo:$g.name}
+					    </option>
+					  </volist>
+					   </select>
+					   <span>&nbsp;&nbsp;仅注册不需要审核的时候有效</span>
+				    </td>
+				  </tr>
+                  
+ 
+                  
+                  <tr>
+                    <td>
+                      <strong>注册试用时间：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="reg_validdays" value="{Wesambo::C('reg_validdays')}" size="45" />                
+                      <span>&nbsp;&nbsp;注册后多少天过期(仅注册不需要审核的时候有效)</span>
+                    </td>
+                  </tr>
+                  
+              
+                
+                  <tr>
+                    <td>
+                      <strong>售后服务电话：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="ipc" value="{Wesambo::C('ipc')}" size="45" />                
+                      <span>&nbsp;&nbsp;例：400-888-8888</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong>站长QQ：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="site_qq" value="{Wesambo::C('site_qq')}" size="45" />                
+                      <span>&nbsp;&nbsp;例如:QQ:8888888</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong>百度地图API：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="baidu_map_api" value="{Wesambo::C('baidu_map_api')}" size="45" />                
+                      <span>
+                        &nbsp;&nbsp;
+                        <a href="http://lbsyun.baidu.com/apiconsole/key?application=key" target="_blank">点击获取</a>
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong>站长Email：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="site_email" value="{Wesambo::C('site_email')}" size="45" />                
+                      <span>&nbsp;&nbsp;例如:QQ:88888888@qq.com</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong>联系地址：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="keyword" value="{Wesambo::C('keyword')}" size="45" />
+                      <span>&nbsp;&nbsp;一般不超过100个字符</span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <strong>网站描述：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="content" value="{Wesambo::C('content')}" size="45" />
+                      <span>&nbsp;&nbsp;一般不超过200个字符</span>
+                    </td>
+                  </tr>
+
+                
+
+                  <tr>
+                    <td>
+                      <strong>底部版权：</strong>
+                    </td>
+                    <td>
+                      <input type="text" name="copyright" value="{Wesambo::C('copyright')}" size="45" />
+                      <span>&nbsp;&nbsp;例:微上宝版权所有</span>
+                    </td>
+                  </tr>
+
+                  <input type="hidden" name="files" value="info.php" />  
+
+                  <tr>
+                    <td colspan="2">
+                      <div id="addkey"></div>
+                      
+                      <input type="submit" value="保存设置" class="btn-large btn-info span7" style="margin-left: 100px;"/>                
+                      
+                    </td>
+                  </tr>
+            </table>
+      </form>         
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+
+<include file="Public:footer" />

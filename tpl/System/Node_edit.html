@@ -1,0 +1,100 @@
+<include file="Public:header" />
+
+<script type="text/javascript">
+	$(function(){
+		$('#submit').click(function(){
+			var forms=$('#form').serialize();
+			$.ajax({
+				type:'POST',
+				url:'{Wesambo::U("Node/edit")}',
+				data:forms,
+				success:function(msg){
+					msg=eval('('+msg+')');
+					alert(msg.info);
+				}
+			});
+		})
+	});
+</script>
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>站点设置 >> 节点管理 >> 编辑节点</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+            <include file="common:public" />
+            <form id="form">
+	            <table class="table table-striped table-bordered" style="margin-top:10px;" id="set_table">
+					    <tr> 
+					      <td><strong>归属节点：</strong></td>
+					      <td>
+							<select name="pid" style="width:136px">
+								{Wesambo:$select_categorys}
+							</select>
+						  </td>
+					    </tr>
+						<tr> 
+					      <td ><strong>节点名称：</strong></td>
+					      <td><input type="text" name="title" value="{Wesambo:$info.title}" class="ipt" size="45" /></td>
+					    </tr>
+					    <tr> 
+					      <td><strong>节点名字：</strong></td>
+					      <td><input type="text" name="name" value="{Wesambo:$info.name}" class="ipt" />　<strong>注释：</strong>填写控制器名或方法名。</td>
+					    </tr>
+						<tr> 
+					      <td><strong>节点类型：</strong></td>
+					      <td>
+							<input type="radio" name="level" value="0" class="ipt" <eq name="info.level" value="0">checked</eq> />应用
+							<input type="radio" name="level" value="2" class="ipt" <eq name="info.level" value="2">checked</eq> />模块
+							<input type="radio" name="level" value="3" class="ipt" <eq name="info.level" value="3">checked</eq> />方法
+						  </td>
+					    </tr>
+						<tr> 
+					      <td><strong>显示类型：</strong></td>
+					      <td>
+							<input type="radio" name="display" value="0" class="ipt" <eq name="info.display" value="0">checked</eq> />隐藏
+							<input type="radio" name="display" value="1" class="ipt" <eq name="info.display" value="1">checked</eq> />导航显示
+							<input type="radio" name="display" value="2" class="ipt" <eq name="info.display" value="2">checked</eq> />菜单显示
+						  </td>
+						  <input type="hidden" name="dosubmit" />
+						  <input type="hidden" name="id" value="{Wesambo:$info.id}" />
+					    </tr>
+						<tr> 
+					      <td><strong>备注：</strong></td>
+					      <td><input type="text" name="remark" size="45" value="{Wesambo:$info.remark}" class="ipt" /></td>
+					    </tr>
+						<tr> 
+					      <td><strong>排序：</strong></td>
+					      <td><input type="text" name="sort" size="45" value="0" class="ipt" /><span>注释：按照升序，值越大越往后。</span></td>
+					    </tr>
+					    <tr> 
+					      <td colspan="2"><button id="submit" class="btn-large btn-info span9" style="margin-left:100px;">编辑</button></td>
+					    </tr>
+	            </table>
+      		</form>         
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+<include file="Public:footer" />

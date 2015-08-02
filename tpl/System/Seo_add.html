@@ -1,0 +1,58 @@
+<include file='Public:header'/>
+<style type="text/css">
+  .line{margin-top: 10px;margin-left:10px;}
+</style>
+    <script>
+      var editor;
+      KindEditor.ready(function(K) {
+        editor = K.create('textarea[name="content"]', {
+          allowFileManager : true
+        });
+      });
+    </script>
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>扩展管理 >> 文章管理 >> 添加文章</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+
+            <form id="myform" action="" method="post">
+              <div class="line">
+                文章标题：<input type='text' name='title' value='' class="span7">
+              </div>              
+              <div class='line'>
+                <textarea id='editor_content' name='content' style='height:300px;' class="span8"></textarea>
+              </div>
+              <div class="line">
+                <input type='submit' value='提交' class='btn'>
+              </div>
+            </form>         
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+
+<include file='Public:footer'/>

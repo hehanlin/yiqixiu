@@ -1,0 +1,42 @@
+安装说明文档
+安装前需要做的事情：
+
+配置伪静态规则，伪静态说明也在根目录
+
+把文件包上传到网站根目录
+
+然后导入数据库文件到数据库
+
+
+2、Application\Common\Conf\systemConfig.php
+配置服务器
+$public_system_db_host = '127.0.0.1';（这个不要修改）
+$public_system_db_name = 'gldfsh';  //你的数据库名称
+$public_system_db_user = 'root';   //你的数据库用户名
+$public_system_db_pwd = '123456';  //你的数据库密码
+
+ Conf\db.php
+
+ 'DB_NAME' => 'ewesambo',
+  //你的数据库名称
+ 'DB_USER' => 'root',
+    //你的数据库用户名
+ 'DB_PWD' => 'root',   //你的数据库密码
+
+**注意数据库要修改2处**
+
+
+前台地址：http://域名
+后台地址：http://域名/admin.php
+
+默认后台账号密码都是admin
+
+
+版权修改
+logo: /Public/css/images/logo.png
+前台版权在\Public\eq\27\eqShow-2.7.1.js
+还有\Application\Home\View\Index\index.html
+后台版权的都在tpl/System这个文件夹
+
+结合xsearch这个搜索工具去搜索
+如果是中文，记得勾选单词选择里的Unicode和utf-8

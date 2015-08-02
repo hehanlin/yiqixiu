@@ -1,0 +1,103 @@
+<include file='Public:header'/>
+
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>用户管理 >> 前台用户 >> 用户修改</h3>
+          </div> <!-- /widget-header -->
+          <div class="widget-content">
+
+
+<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
+			<form action="{Wesambo::U('Users/edit')}" method="post" name="form" id="myform">
+			<input type="hidden" name="userid_int" value="{Wesambo:$info.userid_int}">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="addn">
+
+				 <tr>
+					<th colspan="4">{Wesambo:$title}</th>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>用户名称：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="text" name="email_varchar" class="ipt" size="45" value="{Wesambo:$info.email_varchar}" <eq name="info.email_varchar" value="admin">readonly="readonly"</eq>>
+					</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>密　　码：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="password" name="password" class="ipt" size="45" value="">
+					</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>确认密码：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="password" name="repassword" class="ipt" size="45"/>
+					</td>
+				</tr>
+				
+				<tr>
+					<td height="48" align="right"><strong>用户状态：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="status_int" id="status1" <if condition="($info.status_int eq 1) OR ($info['status_int'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="status_int" id="status2" <eq name="info.status_int" value="0">checked=""</eq> >
+							关闭
+					</td>
+				</tr>
+				
+				<tr>
+					<td height="48" align="right"><strong>场景创建次数：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="text" name="scene_times" class="ipt" size="45" value="{Wesambo:$info.scene_times}">
+					</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>到期时间：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="text" name="limit_time" onClick="WdatePicker()" class="ipt" size="45" value="{Wesambo:$info.limit_time}">
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td height="48" align="right"><strong>备注说明：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="text" name="remark" class="ipt" size="45" value="{Wesambo:$info.remark}"/>
+					</td>
+				</tr>
+				
+	<tr>
+		<td colspan="4">
+				<input class="bginput" type="submit" name="dosubmit" value="修 改" >
+			<input class="bginput" type="button" onclick="javascript:history.back(-1);" value="返 回" ></td>
+	</tr>
+</table>
+</form>
+			                     
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+
+<include file='Public:footer'/>

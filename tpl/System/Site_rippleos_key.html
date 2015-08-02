@@ -1,0 +1,71 @@
+<include file="Public:header" />
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>站点设置 >> 基本设置 >> 微WIFI</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+            <include file="Site:public" />
+            <form id="myform" action="{Wesambo::U('Site/insert')}" method="post">
+              <table class="table table-striped table-bordered" style="margin-top:10px;" id="set_table">
+          <tbody>
+            <tr> 
+                <td><strong>开通说明：</strong></td>
+                <td><a href="http://b1.rippletek.com/wx_service_explain.pdf" target="_blank">  点击查看</a></td>
+              </tr>
+            <tr>
+
+            <tr>
+                <td><strong>节点API ID：</strong></td>
+                <td><input type="text" name="rptk_node_api_id" value="{Wesambo::C('rptk_node_api_id')}" class="ipt" size="20" /><span> 例:yb0184g58e9fpb1t</span>
+            </tr>
+            <tr>
+                <td><strong>节点API KEY：</strong></td>
+                <td><input type="text" name="rptk_node_api_key" value="{Wesambo::C('rptk_node_api_key')}" class="ipt" size="40" /><span> 例:cfbp1fed69b6644f7g76ib2aedf8a66n</span>
+              </tr>
+            <tr>
+                <td><strong>认证API ID：</strong></td>
+                <td><input type="text" name="rptk_wx_auth_api_id" value="{Wesambo::C('rptk_wx_auth_api_id')}" class="ipt" size="20" /><span> 例:h3ec2ic7pe6a287u</span>
+              </tr> 
+            <tr>
+                <td><strong>认证API KEY：</strong></td>
+                <td><input type="text" name="rptk_wx_auth_api_key" value="{Wesambo::C('rptk_wx_auth_api_key')}" class="ipt" size="40" /><span>例:fpf503289416ebf7o7f7f24w23fcfev9</span>
+              </tr>
+              <input type="hidden" name="files" value="rippleos_key.php" />
+              <tr> 
+                <td height="48" colspan="2">
+                <div style="padding-left:100px;">
+                <input type="submit" value="保存设置" class="btn-large btn-info span7"/>
+                </div>
+              </td>
+              </tr>
+                </tbody>
+              </table>
+          </form>         
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+<include file="Public:footer" />

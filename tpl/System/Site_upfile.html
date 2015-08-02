@@ -1,0 +1,114 @@
+<include file="Public:header" />
+<script>
+function changeuploadtype(v){
+	if(v=='local'){
+		document.getElementById('upload_bucket').style.display='none';
+		document.getElementById('upload_secret').style.display='none';
+		document.getElementById('upload_username').style.display='none';
+		document.getElementById('upload_password').style.display='none';
+		document.getElementById('upload_domain').style.display='none';
+	}else{
+		document.getElementById('upload_bucket').style.display='';
+		document.getElementById('upload_secret').style.display='';
+		document.getElementById('upload_username').style.display='';
+		document.getElementById('upload_password').style.display='';
+		document.getElementById('upload_domain').style.display='';
+	}
+}
+</script>
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>站点设置 >> 基本设置 >> 附件设置</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+            <include file="Site:public" />
+            <form id="myform" action="{Wesambo::U('Site/insert')}" method="post">
+	            <table class="table table-striped table-bordered" style="margin-top:10px;" id="set_table">
+				  <tbody>
+					 <tr> 
+					      <td><strong>保存方式：</strong></td>
+					      <td><select onchange="changeuploadtype(this.value)" name="upload_type" id="upload_type"><option value="local"<?php if (C('upload_type')==''||C('upload_type')=='local'){echo ' selected';}?>>保存到本服务器</option><option value="upyun"<?php if (C('upload_type')=='upyun'){echo ' selected';}?>>保存到又拍云</option></select>
+						  </td>
+					    </tr>
+					<tr id="upload_bucket" class="upyun"<?php if (C('upload_type')==''||C('upload_type')=='local'){echo ' style="display:none"';}?>> 
+					      <td><strong>BUCKET：</strong></td>
+					      <td><input type="text" name="up_bucket" value="{Wesambo::C('up_bucket')}" class="ipt" size="45" /><span></span>
+						  </td>
+					    </tr>
+					    <tr id="upload_secret" class="upyun"<?php if (C('upload_type')==''||C('upload_type')=='local'){echo ' style="display:none"';}?>> 
+					      <td><strong>FORM_API_SECRET：</strong></td>
+					      <td><input type="text" name="up_form_api_secret" value="{Wesambo::C('up_form_api_secret')}" class="ipt" size="45" /><span></span>
+						  </td>
+					    </tr>
+					    <tr id="upload_username" class="upyun"<?php if (C('upload_type')==''||C('upload_type')=='local'){echo ' style="display:none"';}?>> 
+					      <td><strong>操作员用户名：</strong></td>
+					      <td><input type="text" name="up_username" value="{Wesambo::C('up_username')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+						  </td>
+					    </tr>
+					    <tr id="upload_password" class="upyun"<?php if (C('upload_type')==''||C('upload_type')=='local'){echo ' style="display:none"';}?>> 
+					      <td><strong>操作员密码：</strong></td>
+					      <td><input type="password" name="up_password" value="{Wesambo::C('up_password')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+						  </td>
+					    </tr>
+					    <tr id="upload_domain" class="upyun"<?php if (C('upload_type')==''||C('upload_type')=='local'){echo ' style="display:none"';}?>> 
+					      <td><strong>云存储域名：</strong></td>
+					      <td><input type="text" name="up_domainname" value="{Wesambo::C('up_domainname')}" class="ipt" size="45" /><span>&nbsp;&nbsp;不包含http://</span>
+						  </td>
+					    </tr>
+						 <tr> 
+					      <td><strong>上传文件类型：</strong></td>
+					      <td><input type="text" name="up_exts" value="{Wesambo::C('up_exts')}" class="ipt" size="45" /><span>&nbsp;&nbsp;多类型用,隔开</span>
+						  
+					    </tr>
+					    <tr> 
+					      <td><strong>上传文件大小限制：</strong></td>
+					      <td><input type="text" name="up_size" value="{Wesambo::C('up_size')}" class="ipt" size="45" /><span>&nbsp;&nbsp;Kb</span>
+						  
+					    </tr>
+						 <tr style="display:none"> 
+					      <td><strong>文件存储路径：</strong></td>
+					      <td><input type="text" name="up_path" value="{Wesambo::C('up_path')}" class="ipt" size="45" /><span>&nbsp;&nbsp;例:./data/upload</span>
+					    </tr> 
+						<tr style="display:none"> 
+					      <td><strong>微信过期提醒：</strong></td>
+					      <td><input type="text" name="connectnum" value="{Wesambo::C('connectnum')}" class="ipt" size="45" /><span>&nbsp;&nbsp;释：当微信请求超过或用户费用到期提示信息</span>
+					    </tr>
+					   <input type="hidden" name="files" value="upfile.php" />
+					    <tr> 
+					      <td colspan="2">
+							  <div id="addkey"></div>
+							  <div style="padding-left:100px;">
+								<input type="submit" value="保存设置" class="btn-large btn-info span7"/>
+							  </div>
+						  </td>
+					    </tr>
+	              </tbody>
+	            </table>
+      		</form>         
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+<include file="Public:footer" />

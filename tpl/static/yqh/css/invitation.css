@@ -1,0 +1,404 @@
+﻿body {
+  font-size: 12px;
+}
+.reveal .slides {
+  left: 0;
+  top: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+.reveal .slides section {
+  left: 0;
+  top: 0;
+  padding: 0 !important;
+}
+.page {
+  position: relative;
+}
+.reveal div {
+  text-align: left;
+}
+.reveal .flag {
+  position: absolute;
+  padding-top: 6px;
+  top: 0;
+  right: 30px;
+  width: 52px;
+  height: 63px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.3;
+  background: url("img/flag.png");
+  color: #773c1c;
+  text-align: center;
+  z-index: 25;
+}
+.reveal .bar-bottom,
+.reveal .bar-top {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(240,0,0,0.9);
+  text-align: center;
+  padding: 30px 0;
+}
+.reveal .bar-top {
+  top: 0;
+  bottom: auto;
+  background: rgba(0,240,0,0.9);
+}
+.reveal .guest-page .intro-wrap {
+  position: relative;
+}
+.reveal .guest-page .intro-wrap .guest-intro-block {
+  position: absolute;
+}
+.reveal .guest-page .intro-wrap .guest-intro-block img {
+  height: 70px;
+}
+.reveal .guest-page .intro-wrap .guest-intro-block .bar {
+  position: absolute;
+  width: 300px;
+  bottom: -5px;
+  background: #f00;
+  opacity: 0.8;
+  padding: 0 10px;
+  line-height: 2;
+  color: #fff;
+  font-size: 10px;
+}
+.reveal .swiper-container {
+  position: absolute;
+  top: 50%;
+  height: 310px;
+  margin-top: -200px;
+}
+.reveal .arrange-block {
+  font-size: 12px;
+  width: 235px;
+  margin-top: 50px;
+}
+.reveal .arrange-block .arrange-block-wrapper {
+  width: 220px;
+  height: 230px;
+  background: rgba(254,249,197,0.8);
+  border-radius: 10px;
+}
+.reveal .arrange-block .arrange-block-wrapper table {
+  margin: 0 10px;
+}
+.reveal .arrange-block .arrange-block-wrapper table td.left {
+  padding-top: 2px;
+  font-size: 14px;
+  color: #015097;
+  width: 28px;
+}
+.reveal .arrange-block .arrange-block-wrapper table td.right {
+  padding-top: 2px;
+  text-align: left;
+  vertical-align: top;
+}
+.reveal .arrange-block .arrange-block-wrapper table td.right p {
+  text-align: left;
+  font-size: 11px;
+}
+.reveal .arrange-block .arrange-block-wrapper .title {
+  padding: 10px;
+  font-size: 20px;
+  background: rgba(1,80,151,0.8);
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 3px;
+}
+.reveal .arrange-block .arrange-block-wrapper p {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+.reveal .arrange-block .arrange-block-wrapper .time {
+  font-size: 16px;
+  color: #015097;
+}
+.reveal .arrange-info {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+.reveal .arrange-info .info-left,
+.reveal .arrange-info .info-right {
+  background: rgba(240,240,255,0.5);
+  height: 120px;
+  float: left;
+}
+.reveal .arrange-info .info-left {
+  width: 30%;
+}
+.reveal .arrange-info .info-left .top {
+  height: 35px;
+  background-color: #005098;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 35px;
+}
+.reveal .arrange-info .info-left p {
+  margin-top: 10px;
+  text-align: center;
+  color: #015097;
+  font-size: 20px;
+  line-height: 1;
+}
+.reveal .arrange-info .info-right {
+  background: rgba(240,240,255,0.8);
+  width: 70%;
+}
+.reveal .arrange-info .info-right p {
+  margin: 20px 0 0 20px;
+  line-height: 2;
+}
+.reveal .arrange-info .info-bottom img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+.reveal .intro-content {
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  padding: 10px 5% 38px 5%;
+  background: rgba(119,119,119,0.7);
+  line-height: 1.3;
+}
+.reveal .banners {
+  top: 5%;
+  position: relative;
+  width: 100%;
+  height: 240px;
+}
+.reveal .banners img {
+  position: absolute;
+  width: 120px;
+}
+.reveal .contact-card,
+.reveal .contact-card-travel {
+  background: rgba(240,240,255,0.5);
+  position: absolute;
+  top: 50%;
+  margin-top: -160px;
+  bottom: 20px;
+  width: 80%;
+  padding: 5% 5%;
+  height: 320px;
+  left: 5%;
+  border-radius: 15px;
+}
+.reveal .contact-card p,
+.reveal .contact-card-travel p {
+  margin-bottom: 3px;
+}
+.reveal .contact-card .code-info .left,
+.reveal .contact-card-travel .code-info .left {
+  float: left;
+  padding: 10px;
+}
+.reveal .contact-card .code-info .right,
+.reveal .contact-card-travel .code-info .right {
+  padding: 10px;
+  line-height: 30px;
+  float: left;
+  font-size: 16px;
+}
+.reveal .contact-card-travel {
+  padding: 3% 5%;
+  margin-top: -180px;
+  height: 360px;
+  line-height: 1.5;
+}
+.reveal .contact-card-travel .bf {
+  color: #601f15;
+}
+.reveal .contact-card-travel h2 {
+  color: #601f15;
+  text-align: center;
+  font-size: 20px;
+  margin: 10px;
+  line-height: 1.2;
+}
+.reveal .contact-card-travel h3 {
+  color: #601f15;
+  margin-top: 5px;
+  font-size: 14px;
+}
+.reveal .travel-intro {
+  position: absolute;
+  top: 100%;
+  text-align: center;
+  margin-top: -30px;
+  z-index: 26;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  background: rgba(255,255,200,0.9);
+  border-radius: 15px;
+  width: 70%;
+  padding: 0 5%;
+  height: 80%;
+  left: 10%;
+}
+.reveal .travel-intro .title {
+  text-align: center;
+  padding: 10px 0;
+}
+.reveal .travel-intro .swiper-slide {
+  height: 100%;
+  text-align: center;
+}
+.reveal .travel-intro .swiper-slide div {
+  text-align: center;
+}
+.reveal .travel-intro .swiper-slide div.info {
+  padding: 5px 20px 20px 20px;
+  line-height: 150%;
+  text-align: left;
+  font-size: 12px;
+}
+.reveal .travel-intro .swiper-slide div.info h5 {
+  margin: 10px 10px 10px -10px;
+}
+.reveal .travel-intro .travel-arrow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+.reveal .travel-intro .travel-arrow img {
+  margin: 20px;
+}
+fieldset {
+  border: 0;
+}
+.invitation-form {
+  padding: 20px;
+}
+.invitation-form .title {
+  font-size: 18px;
+  text-align: center;
+}
+.invitation-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+.invitation-form input {
+  width: 100%;
+  border: 1px solid #ccc;
+  height: 18px;
+}
+button,
+.button {
+  font-size: 16px;
+  color: #fff;
+  vertical-align: middle;
+  border: 0;
+  padding: 8px 15px;
+  background: #3d8f38;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0 5px;
+  font-size: 14px;
+}
+.arrow {
+  position: fixed;
+  left: 50%;
+  margin-left: -19px;
+  z-index: 50;
+  transition: opacity 0.2s ease;
+  -webkit-transition: opacity 0.2s ease;
+}
+.arrow img {
+  width: 38px;
+}
+.arrow-up {
+  top: 3px;
+  animation: arrow-up-shake 1s infinite;
+  -webkit-animation: arrow-up-shake 1s infinite;
+}
+.arrow-down {
+  bottom: 3px;
+  animation: arrow-down-shake 1s infinite;
+  -webkit-animation: arrow-down-shake 1s infinite;
+}
+@-moz-keyframes arrow-up-shake {
+  0% {
+    top: 10px;
+  }
+  50% {
+    top: 15px;
+  }
+}
+@-webkit-keyframes arrow-up-shake {
+  0% {
+    top: 10px;
+  }
+  50% {
+    top: 15px;
+  }
+}
+@-o-keyframes arrow-up-shake {
+  0% {
+    top: 10px;
+  }
+  50% {
+    top: 15px;
+  }
+}
+@keyframes arrow-up-shake {
+  0% {
+    top: 10px;
+  }
+  50% {
+    top: 15px;
+  }
+}
+@-moz-keyframes arrow-down-shake {
+  0% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 15px;
+  }
+}
+@-webkit-keyframes arrow-down-shake {
+  0% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 15px;
+  }
+}
+@-o-keyframes arrow-down-shake {
+  0% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 15px;
+  }
+}
+@keyframes arrow-down-shake {
+  0% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 15px;
+  }
+}
+
+
+.right a:visited{color:blue}
+.right a:hover {color:#FF00FF}
+.right a{text-decoration:none}

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>站点配置</title>
+<link href="{Wesambo::RES}/images/main.css" type="text/css" rel="stylesheet">
+<link href="{Wesambo::RES}/images/jquery-1.7.2.min.js" type="text/css" rel="stylesheet">
+<link href="{Wesambo::RES}/images/jquery.form.js" type="text/css" rel="stylesheet">
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+</head>
+<body class="warp">
+<style>
+.set_top{background:url('{Wesambo::RES}/images/set_top.png');height:60px;}
+.set_top li{font-weight: bold;float:left;width:98px;line-height:60px;text-align: center;background:url('{Wesambo::RES}/images/set_top_li.png');}
+#set_top_li_bg{background:url('{Wesambo::RES}/images/set_top_li_hover.png');}
+</style>
+<include file="Site:public" />
+<div id="artlist">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" id="addn">
+ <form id="myform" action="{Wesambo::U('Site/insert')}" method="post">
+
+    <tr> 
+      <td  height="48" align="right"><strong>支付宝帐号</strong></td>
+      <td><input type="text" name="alipay_name" value="{Wesambo::C('alipay_name')}" class="ipt" size="45" /><span>&nbsp;&nbsp;例：alipay@114.215.105.187</span>
+	  </td>
+    </tr>
+	 <tr> 
+      <td  height="48" align="right"><strong>支付宝PID：</strong></td>
+      <td><input type="text" name="alipay_pid" value="{Wesambo::C('alipay_pid')}" class="ipt" size="45" /><span>&nbsp;&nbsp;请登陆支付宝商家服务中去查看</span>
+	  
+    </tr>
+	 <tr> 
+      <td  height="48" align="right"><strong>支付宝KEY：</strong></td>
+      <td><input type="text" name="alipay_key" value="{Wesambo::C('alipay_key')}" class="ipt" size="45" /><span>&nbsp;&nbsp;请登陆支付宝商家服务中去查看</span>
+    </tr> 
+	<tr> 
+		<td  height="48" align="right"><strong>选择接口类型：</strong></td>
+		<td>
+			<select name="alipay_pay_method">
+				<volist name="alipay" id="vo">
+				<option value="{Wesambo:$vo.id}" <if condition="$vo.id eq $alipay_pay_method">selected="selected"</if> >{Wesambo:$vo.method}</option>
+				</volist>
+			</select><span>&nbsp;&nbsp;默认为即时到帐
+		</td>
+    </tr>
+   <input type="hidden" name="files" value="alipay.php" />
+    <tr> 
+      <td height="48" colspan="2">
+		  <div id="addkey"></div>
+		  <div style="padding-left:100px;">
+			<input type="submit" value="保存设置" />
+		  </div>
+	  </td>
+    </tr>
+	</form>
+</table><br />
+<br />
+<br />
+
+</div>
+</body>
+</html>

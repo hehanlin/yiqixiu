@@ -1,0 +1,99 @@
+<include file="Public:header" />
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>功能管理 >> 功能模块 >> <gt name="info.id" value="0">修改模块<else />添加模块</gt></h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+         			<gt name="info.id" value="0">
+			<form action="{Wesambo::U('Function/edit')}" method="post" name="form" id="myform">
+			<input type="hidden" name="id" value="{Wesambo:$info.id}">
+		<else />
+			<form action="{Wesambo::U('Function/add')}" method="post" name="form" id="myform">
+		</gt>
+	            <table class="table table-striped table-bordered" style="margin-top:10px;" id="set_table">
+				<tr>
+					<td><strong>状态：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="status" id="status1" <if condition="($info.status eq 1) OR ($info['status'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="status" id="status2" <eq name="info.status" value="0">checked=""</eq> >
+							关闭
+					</td>
+				</tr>
+					<tr>
+					<td><strong>模块分类：</strong></td>
+					<td colspan="3" class="lt">
+						<select name="isserve" style="width:136px;height:30px;">
+								<option style="height:30px;" value="1" <eq name="info.isserve" value="1">selected="selected"</eq> >查询模块</option>
+								<option style="height:30px;" value="2" <eq name="info.isserve" value="2">selected="selected"</eq> >功能查询</option>
+						</select>
+					</td>
+				</tr>				
+				<tr>
+					<td><strong>等级要求：</strong></td>
+					<td colspan="3" class="lt">
+						<select name="gid" style="width:136px;height:30px;">
+							<volist name="group" id="vo">
+								<option style="height:30px;" value="{Wesambo:$vo.id}" <eq name="vo.id" value="$info.gid">selected="selected"</eq> >{Wesambo:$vo.name}</option>
+							</volist>
+						</select>
+					</td>
+				</tr>				
+				<tr>
+					<td><strong>模块名称：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="text" name="name" class="ipt" size="45" value="{Wesambo:$info.name}">
+					</td>
+				</tr>
+				<tr>
+					<td><strong>模块方法名称：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="text" name="funname" class="ipt" size="45" value="{Wesambo:$info.funname}">
+					</td>
+				</tr>
+				<tr>
+					<td><strong>功能说明：</strong></td>
+					<td colspan="3" class="lt">
+						<textarea type="text" name="info" value="" class="ipt" style="width:450px;height:60px;margin:5px 0 5px 0;">{Wesambo:$info.info}</textarea>
+					</td>
+				</tr>
+	<tr>
+		<td colspan="4">
+			<gt name="info.id" value="0">
+				<button class="btn" type="submit" name="" value="" >修 改</button>
+				<else />
+				<button class="btn" type="submit" name="" value="">添 加</button></gt>
+			&nbsp;
+			<button class="btn" onclick="javascript:history.back(-1);" value="" >返 回</button></td>
+	</tr>
+	            </table>
+	        </form>
+   
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+<include file="Public:footer" />

@@ -1,0 +1,84 @@
+<include file="Public:header" />
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>站点设置 >> 基本设置 >> 邮箱设置</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+            <include file="Site:public" />
+            <form id="myform" action="{Wesambo::U('Site/insert')}" method="post">
+	            <table class="table table-striped table-bordered" style="margin-top:10px;" id="set_table">
+				  <tbody>
+					<tr> 
+				      <td><strong>邮箱发送方式：</strong></td>
+				      <td><input type="radio" name="email" value="true" <php>if(C('email')==='true')echo checked;</php> />SMTP函数发送<input type="radio" name="email" value="false" <php>if(C('email')==='false')echo checked;</php> />mail模块发送</td>
+				    </tr>
+				    <tr> 
+				      <td><strong>邮件服务器：</strong></td>
+				      <td><input type="text" name="email_server" value="{Wesambo::C('email_server')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+					  </td>
+				    </tr>
+					 <tr> 
+				      <td><strong>服务器端口：</strong></td>
+				      <td><input type="text" name="email_port" value="{Wesambo::C('email_port')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+					  
+				    </tr>
+					<!--<tr> 
+				      <td><strong>发件人地址：</strong></td>
+				      <td><input type="text" name="email_form" value="{Wesambo::C('email_form')}" class="ipt" size="45" /><span>&nbsp;&nbsp;一般不超过80个字符</span>
+				    </tr>-->
+					 <tr> 
+				      <td><strong> 用户名：</strong></td>
+				      <td><input type="text" name="email_user" value="{Wesambo::C('email_user')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+				    </tr> 
+					<tr> 
+				      <td><strong>密  码：</strong></td>
+				      <td><input type="text" name="email_pwd" value="{Wesambo::C('email_pwd')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+				    </tr>
+					<tr> 
+				      <td><strong>密码找回标题：</strong></td>
+				      <td><input type="text" name="pwd_email_title" value="{Wesambo::C('pwd_email_title')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+				    </tr>	
+					<tr> 
+				      <td><strong>密码找回主题：</strong></td>
+				      <td><input type="text" name="pwd_email_content" value="{Wesambo::C('pwd_email_content')}" class="ipt" size="45" /><span>&nbsp;&nbsp;</span>
+				    </tr>
+				   <input type="hidden" name="files" value="email.php" />
+				    <tr> 
+				      <td colspan="2">
+						  <div id="addkey"></div>
+						  <div style="padding-left:100px;">
+							<input type="submit" value="保存设置" class="btn-large btn-info span7"/>
+						  </div>
+					  </td>
+				    </tr>
+	              </tbody>
+	            </table>
+      		</form>         
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+<include file="Public:footer" />

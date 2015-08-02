@@ -1,0 +1,110 @@
+<include file="Public:header" />
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>代理商管理 >> 代理商管理</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+
+<form action="" method="post" name="form" enctype="multipart/form-data" id="myform">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" id="addn">
+        <tr>
+          <td height="48" align="right"><strong>名称：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="text" name="name" class="ipt" size="45" value="{Wesambo:$info.name}" />
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>手机：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="text" name="mp" class="ipt" size="45" value="{Wesambo:$info.mp}" />
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>密码：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="password" name="password" class="ipt" size="45" value="" /> 不修改密码请留空
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>QQ：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="text" name="qq" class="ipt" size="45" value="{Wesambo:$info.qq}" />
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>站点地址：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="text" name="siteurl" class="ipt" size="45" value="{Wesambo:$info.siteurl}" /><br>
+             比如：http:/daili.baidu.com 这里的网址，即代理商的网址，可以解析二级域名或者一级域名，在IIS添加后将会显示代理信息。
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>到期时间：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="text" name="endtime" onClick="WdatePicker()" class="ipt" size="45" value="{Wesambo:$info.endtime|date="Y-m-d",###}">
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>包月价格：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="text" name="monthprice" class="ipt" size="45" value="{Wesambo:$info.monthprice}" />  如果该代理商按公众号数量收钱，请填写0
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>公众号价格：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="text" name="wxacountprice" class="ipt" size="45" value="{Wesambo:$info.wxacountprice}" />  如果不限制，请填写0
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>账户余额：</strong></td>
+          <td colspan="3" class="lt">
+            <input type="text" name="moneybalance" class="ipt" size="45" value="{Wesambo:$info.moneybalance}" />
+          </td>
+        </tr>
+        <tr>
+          <td height="48" align="right"><strong>备注说明：</strong></td>
+          <td colspan="3" class="lt">
+            <textarea name="intro" class="ipt" style="width:300px;height:80px;">{Wesambo:$info.intro}</textarea>
+          </td>
+        </tr>
+        
+  <tr>
+    <td colspan="4" style="text-align:center">
+      <gt name="info.id" value="0">
+        <input class="bginput" type="submit" name="dosubmit" value="修 改" >
+        <else />
+        <input class="bginput" type="submit" name="dosubmit" value="添 加"></gt>
+      &nbsp;
+      <input class="bginput" type="button" onclick="javascript:history.back(-1);" value="返 回" ></td>
+  </tr>
+</table>
+</form>    
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+<include file="Public:footer" />

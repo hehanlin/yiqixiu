@@ -1,0 +1,651 @@
+<include file='Public:header'/>
+
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>用户管理 >> 前台用户 >> 用户权限</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+
+<gt name="info.id" value="0">
+<script src="./tpl/User/default/common/js/date/WdatePicker.js"></script>
+			<form action="{Wesambo::U('Users/edit')}" method="post" name="form" id="myform">
+			<input type="hidden" name="id" value="{Wesambo:$info.id}">
+		<else />
+			<form action="{Wesambo::U('Users/add')}" method="post" name="form" id="myform">
+		</gt>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" id="addn">
+
+				 <tr>
+					<th colspan="5">{Wesambo:$title}</th>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>用户名称：</strong></td>
+					<td colspan="4" class="lt">
+						<input type="text" name="username" class="ipt" size="45" value="{Wesambo:$info.username}" <eq name="info.username" value="admin">readonly="readonly"</eq>>
+					</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>手机号：</strong></td>
+					<td colspan="4" class="lt">
+						<input type="text" name="mp" class="ipt" size="45" value="{Wesambo:$info.mp}" />
+					</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>邮箱：</strong></td>
+					<td colspan="4" class="lt">
+						<input type="text" name="email" class="ipt" size="45" value="{Wesambo:$info.email}" />
+					</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>用户角色：</strong></td>
+					<td colspan="4" class="lt">
+						<select name="gid" style="width:136px">
+							<volist name="role" id="vo">
+								<option value="{Wesambo:$vo.id}" <eq name="vo.id" value="$info.gid">selected=""</eq> >{Wesambo:$vo.name}</option>
+							</volist>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>到期时间：</strong></td>
+					<td colspan="3" class="lt">
+						<input type="text" name="viptime" onClick="WdatePicker()" class="ipt" size="45" value="{Wesambo:$info.viptime|date="Y-m-d",###}">
+					</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>用户状态：</strong></td>
+					<td colspan="4" class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="status" id="status1" <if condition="($info.status eq 1) OR ($info['status'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="status" id="status2" <eq name="info.status" value="0">checked=""</eq> >
+							关闭
+					</td>
+				</tr>
+				
+		<!--这里是独立功能控制 -->		
+			<tr><td  style="font-size:14px; font-weight:bolder; color: #666; background: #F0F0F0; height:40px; line-height:40px; text-indent:30px;"  colspan="4">主模块权限控制(一级模块关闭后 各模块功能独立权限将不起作用)</td></tr>
+				<tr>
+					<td height="48" align="right"><strong>微路由模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wifi" id="wifi" <if condition="($info.wifi eq 1) OR ($info['wifi'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wifi" id="wifi" <eq name="info.wifi" value="0">checked=""</eq> >
+							关闭
+					</td>
+
+
+				
+					<td height="48" align="right"><strong>高级模板：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="mb" id="mb" <if condition="($info.mb eq 1) OR ($info['mb'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="mb" id="mb" <eq name="info.mb" value="0">checked=""</eq> >
+							关闭</td>
+					
+				</tr>
+                
+                
+                
+                <tr>
+					<td height="48" align="right"><strong>微电商模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="weidianshang" id="weidianshang" <if condition="($info.weidianshang eq 1) OR ($info['weidianshang'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="weidianshang" id="weidianshang" <eq name="info.weidianshang" value="0">checked=""</eq> >
+							关闭
+					</td>
+
+
+				
+					<td height="48" align="right"><strong>微促销模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wcx" id="wcx" <if condition="($info.wcx eq 1) OR ($info['wcx'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wcx" id="wcx" <eq name="info.wcx" value="0">checked=""</eq> >
+							关闭</td>
+					
+				</tr>
+                
+                
+                             <tr>
+					<td height="48" align="right"><strong>微互动模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="whd" id="whd" <if condition="($info.whd eq 1) OR ($info['whd'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="whd" id="whd" <eq name="info.whd" value="0">checked=""</eq> >
+							关闭
+					</td>
+
+
+				
+					<td height="48" align="right"><strong>微游戏模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wyx" id="wyx" <if condition="($info.wyx eq 1) OR ($info['wyx'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wyx" id="wyx" <eq name="info.wyx" value="0">checked=""</eq> >
+							关闭</td>
+					
+				</tr>
+                   
+                
+                                             <tr>
+					<td height="48" align="right"><strong>微行业模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="why" id="why" <if condition="($info.why eq 1) OR ($info['why'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="why" id="why" <eq name="info.why" value="0">checked=""</eq> >
+							关闭
+					</td>
+
+					<td height="48" align="right"><strong>微应用模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="weiyuyue" id="weiyuyue" <if condition="($info.weiyuyue eq 1) OR ($info['wyy'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="weiyuyue" id="weiyuyue" <eq name="info.weiyuyue" value="0">checked=""</eq> >
+							关闭
+					</td>
+				
+
+					
+				</tr>
+                   
+                
+                
+                
+                                                           <tr>
+					<td height="48" align="right"><strong>在线客服模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="kf" id="kf" <if condition="($info.kf eq 1) OR ($info['kf'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="kf" id="kf" <eq name="info.kf" value="0">checked=""</eq> >
+							关闭
+					</td>
+
+
+				
+					<td height="48" align="right"><strong>会员管理模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="huiyuan" id="huiyuan" <if condition="($info.huiyuan eq 1) OR ($info['huiyuan'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="huiyuan" id="huiyuan" <eq name="info.huiyuan" value="0">checked=""</eq> >
+							关闭</td>
+					
+				</tr>
+                   
+                
+                
+                
+                
+                
+
+				<tr>
+					<td height="48" align="right"><strong>独立商城功能：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="csshop" id="csshop" <if condition="($info.csshop eq 1) OR ($info['csshop'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="csshop" id="csshop" <eq name="info.csshop" value="0">checked=""</eq> >
+							关闭
+					</td>
+		            <td height="48" align="right"><strong>微生活模块：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wsh" id="wsh" <if condition="($info.wsh eq 1) OR ($info['wsh'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wsh" id="wsh" <eq name="info.wsh" value="0">checked=""</eq> >
+							关闭
+					</td>
+
+
+				</tr>
+
+ <!--这里是行业权限控制 -->  
+ 
+ 
+ <tr><td  style="font-size:14px; font-weight:bolder; color: #666; background: #F0F0F0; height:40px; line-height:40px; text-indent:30px;"  colspan="4">行业模块权限控制</td></tr>
+ 
+ 
+ 
+ 
+             
+				<tr>
+
+
+
+					<td height="48" align="right"><strong>微餐饮：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="cy" id="cy" <if condition="($info.cy eq 1) OR ($info['cy'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="cy" id="cy" <eq name="info.cy" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微租借：</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="zujie" id="zujie" <if condition="($info.zujie eq 1) OR ($info['zujie'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zujie" id="zujie" <eq name="info.zujie" value="0">checked=""</eq> >
+							关闭</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>微预约：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="yy" id="yy" <if condition="($info.yy eq 1) OR ($info['yy'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="yy" id="yy" <eq name="info.yy" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微房产：</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="fc" id="fc" <if condition="($info.fc eq 1) OR ($info['fc'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="fc" id="fc" <eq name="info.fc" value="0">checked=""</eq> >
+							关闭</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>微酒店：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="jd" id="jd" <if condition="($info.jd eq 1) OR ($info['jd'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="jd" id="jd" <eq name="info.jd" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微医疗：</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="yl" id="yl" <if condition="($info.yl eq 1) OR ($info['yl'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="yl" id="yl" <eq name="info.yl" value="0">checked=""</eq> >
+							关闭</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>微汽车：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="qc" id="qc" <if condition="($info.qc eq 1) OR ($info['qc'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="qc" id="qc" <eq name="info.qc" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微装修：</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="zhuangxiu" id="zhuangxiu" <if condition="($info.zhuangxiu eq 1) OR ($info['zhuangxiu'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zhuangxiu" id="zhuangxiu" <eq name="info.zhuangxiu" value="0">checked=""</eq> >
+							关闭</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>微美容：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="mr" id="mr" <if condition="($info.mr eq 1) OR ($info['mr'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="mr" id="mr" <eq name="info.mr" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微酒吧：</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="jb" id="jb" <if condition="($info.jb eq 1) OR ($info['jb'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="jb" id="jb" <eq name="info.jb" value="0">checked=""</eq> >
+							关闭</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>微教育：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="jy" id="jy" <if condition="($info.jy eq 1) OR ($info['jy'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="jy" id="jy" <eq name="info.jy" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微花店：</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="hd" id="hd" <if condition="($info.hd eq 1) OR ($info['hd'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="hd" id="hd" <eq name="info.hd" value="0">checked=""</eq> >
+							关闭</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>微政务：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="zw" id="zw" <if condition="($info.zw eq 1) OR ($info['zw'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zw" id="zw" <eq name="info.zw" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微健身：</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="js" id="js" <if condition="($info.js eq 1) OR ($info['js'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="js" id="js" <eq name="info.js" value="0">checked=""</eq> >
+							关闭</td>
+				</tr>
+				<tr>
+					<td height="48" align="right"><strong>微旅游：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="ly" id="ly" <if condition="($info.ly eq 1) OR ($info['ly'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="ly" id="ly" <eq name="info.ly" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微食品：</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="sp" id="sp" <if condition="($info.sp eq 1) OR ($info['sp'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="sp" id="sp" <eq name="info.sp" value="0">checked=""</eq> >
+							
+
+						关闭</td>
+				</tr>
+
+
+
+
+			<tr>
+					<td height="48" align="right"><strong>微物业：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wuye" id="wuye" <if condition="($info.wuye eq 1) OR ($info['wuye'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wuye" id="wuye" <eq name="info.wuye" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    <td height="48" align="right"><strong>微KTV</strong></td>
+					<td class="lt"><input type="radio" class="radio" class="ipt" value="1" name="ktv" id="ktv" <if condition="($info.ktv eq 1) OR ($info['ktv'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="ktv" name="ktv" id="kvt" <eq name="info.ktv" value="0">checked=""</eq> >
+							关闭</td>
+				</tr> 
+
+<tr>
+					<td height="48" align="right"><strong>微婚庆：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="hunqing" id="wuye" <if condition="($info.hunqing eq 1) OR ($info['hunqing'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="hunqing" id="wuye" <eq name="info.hunqing" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    					<td height="48" align="right"><strong>房产中介：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="fczj" id="fczj" <if condition="($info.fczj eq 1) OR ($info['fczj'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="fczj" id="fczj" <eq name="info.fczj" value="0">checked=""</eq> >
+							关闭
+					</td>
+
+				</tr> 
+<!-- 
+互动模块独立功能控制开始 -->
+ <tr><td  style="font-size:14px; font-weight:bolder; color: #666; background: #F0F0F0; height:40px; line-height:40px; text-indent:30px;"  colspan="4">微促销模块独立功能控制</td></tr>
+
+
+<tr>
+					<td height="48" align="right"><strong>刮刮卡：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="ggk" id="wuye" <if condition="($info.ggk eq 1) OR ($info['ggk'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="ggk" id="wuye" <eq name="info.ggk" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>大转盘：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="dzp" id="wuye" <if condition="($info.dzp eq 1) OR ($info['dzp'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="dzp" id="wuye" <eq name="info.dzp" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+				</tr> 
+<tr>
+					<td height="48" align="right"><strong>水果机：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="sgj" id="sgj" <if condition="($info.sgj eq 1) OR ($info['sgj'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="sgj" id="sgj" <eq name="info.sgj" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>优惠券：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="yhq" id="wuye" <if condition="($info.yhq eq 1) OR ($info['yhq'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="yhq" id="wuye" <eq name="info.yhq" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 		
+
+<tr>
+
+					<td height="48" align="right"><strong>砸金蛋：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="zjd" id="zjd" <if condition="($info.zjd eq 1) OR ($info['zjd'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zjd" id="zjd" <eq name="info.zjd" value="0">checked=""</eq> >
+							关闭
+					</td>
+					
+					<td height="48" align="right"><strong>幸运九宫格：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="jge" id="jge" <if condition="($info.jge eq 1) OR ($info['jge'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="jge" id="jge" <eq name="info.jge" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 	
+
+
+<!-- 这里是微互动模块控制开始	 -->
+<tr><td  style="font-size:14px; font-weight:bolder; color: #666; background: #F0F0F0; height:40px; line-height:40px; text-indent:30px;"  colspan="4">互动模块独立功能控制</td></tr>
+
+
+<tr>
+<tr>
+
+					<td height="48" align="right"><strong>微信签到：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wxqd" id="wxqd" <if condition="($info.wxqd eq 1) OR ($info['wxqd'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wxqd" id="wxqd" <eq name="info.wxqd" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>祝福贺卡：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="zfhk" id="zfhk" <if condition="($info.zfhk eq 1) OR ($info['zfhk'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zfhk" id="zfhk" <eq name="info.zfhk" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 	
+<tr>
+
+					<td height="48" align="right"><strong>摇一摇：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="yiy" id="yiy" <if condition="($info.yiy eq 1) OR ($info['yiy'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="yiy" id="yiy" <eq name="info.yiy" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>照片墙：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="zpq" id="zpq" <if condition="($info.zpq eq 1) OR ($info['zpq'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zpq" id="zpq" <eq name="info.zpq" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 
+<tr>
+
+					<td height="48" align="right"><strong>微信墙：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wxq" id="wxq" <if condition="($info.wxq eq 1) OR ($info['wxq'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wxq" id="wxq" <eq name="info.wxq" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>微名片：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wmp" id="wmp" <if condition="($info.wmp eq 1) OR ($info['wmp'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wmp" id="wmp" <eq name="info.wmp" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 
+<tr>
+
+					<td height="48" align="right"><strong>主题活动报名：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="zthdbm" id="zthdbm" <if condition="($info.zthdbm eq 1) OR ($info['zthdbm'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zthdbm" id="zthdbm" <eq name="info.zthdbm" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>一站到底：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="yzdd" id="yzdd" <if condition="($info.yzdd eq 1) OR ($info['yzdd'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="yzdd" id="yzdd" <eq name="info.yzdd" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 
+<!-- 这里是微应用模块控制开始	 -->
+<tr><td  style="font-size:14px; font-weight:bolder; color: #666; background: #F0F0F0; height:40px; line-height:40px; text-indent:30px;"  colspan="4">微应用模块独立功能控制</td></tr>
+
+<tr>
+
+					<td height="48" align="right"><strong>微调研：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wdy" id="wdy" <if condition="($info.wdy eq 1) OR ($info['wdy'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wdy" id="wdy" <eq name="info.wdy" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>微相册：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wxc" id="wxc" <if condition="($info.wxc eq 1) OR ($info['wxc'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wxc" id="wxc" <eq name="info.wxc" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 
+<tr>
+
+					<td height="48" align="right"><strong>微投票：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wtp" id="wtp" <if condition="($info.wtp eq 1) OR ($info['wtp'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wtp" id="wtp" <eq name="info.wtp" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>360全景：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="qj" id="qj" <if condition="($info.qj eq 1) OR ($info['qj'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="qj" id="qj" <eq name="info.qj" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr>  
+<tr>
+
+					<td height="48" align="right"><strong>万能表单：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wnbd" id="wnbd" <if condition="($info.wnbd eq 1) OR ($info['wnbd'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wnbd" id="wnbd" <eq name="info.wnbd" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>在线预订：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="zxyd" id="zxyd" <if condition="($info.zxyd eq 1) OR ($info['zxyd'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zxyd" id="zxyd" <eq name="info.zxyd" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 
+<tr>
+
+					<td height="48" align="right"><strong>微论坛：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wlt" id="wlt" <if condition="($info.wlt eq 1) OR ($info['wlt'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wlt" id="wlt" <eq name="info.wlt" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>微邀请：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wyq" id="wyq" <if condition="($info.wyq eq 1) OR ($info['wyq'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wyq" id="wyq" <eq name="info.wyq" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 
+<tr>
+
+					<td height="48" align="right"><strong>微商盟：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wsm" id="wsm" <if condition="($info.wsm eq 1) OR ($info['wsm'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wsm" id="wsm" <eq name="info.wsm" value="0">checked=""</eq> >
+							关闭
+					</td>
+					<td height="48" align="right"><strong>微喜帖：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wxt" id="wxt" <if condition="($info.wxt eq 1) OR ($info['wxt'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wxt" id="wxt" <eq name="info.wxt" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 
+<tr>
+
+					<td height="48" align="right"><strong>微预约：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="wyy" id="wyy" <if condition="($info.wyy eq 1) OR ($info['wyy'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="wyy" id="wyy" <eq name="info.wyy" value="0">checked=""</eq> >
+							关闭
+					</td>
+										<td height="48" align="right"><strong>微招聘：</strong></td>
+					<td class="lt">
+						<input type="radio" class="radio" class="ipt" value="1" name="zhaopin" id="zhaopin" <if condition="($info.zhaopin eq 1) OR ($info['zhaopin'] eq '') ">checked=""</if> >
+							启用
+							<input type="radio" class="radio" class="ipt"  value="0" name="zhaopin" id="zhaopin" <eq name="info.zhaopin" value="0">checked=""</eq> >
+							关闭
+					</td>
+                    
+</tr> 
+	<tr>
+		<td colspan="5" style=" border-top:1px solid #EBEBEB; padding-top:10px;">
+        <div style="padding-left:360px;">
+			<gt name="info.id" value="0" >
+				<input class="bginput" style="background: #0058B0; color:#fff; padding:5px 20px;" type="submit" name="dosubmit" value="修 改" >
+				<else />
+				<input class="bginput" type="submit" name="dosubmit" value="添 加"></gt>
+			&nbsp;
+			<input style="background: #0058B0; color:#fff; padding:5px 20px;"  class="bginput" type="button" onclick="javascript:history.back(-1);" value="返 回" ></div></td>
+	</tr>
+</table>
+</form>                     
+          
+          </div> <!-- /widget-content -->
+          
+        </div> <!-- /widget -->;
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+
+<include file='Public:footer'/>

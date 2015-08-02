@@ -1,0 +1,74 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{Wesambo::C('site_name')}-{Wesambo::C('site_name')}后台管理系统</title>
+<meta name="keywords" content="{Wesambo::C('site_name')}-{Wesambo::C('site_name')}后台管理系统" />
+<meta name="description" content="{Wesambo::C('site_name')}-{Wesambo::C('site_name')}后台管理系统" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<link href="{Wesambo::RES}/images/style.css" type="text/css" rel="stylesheet">
+<script src="{Wesambo::STATICS}/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="{Wesambo::RES}/js/frame.js" type=text/javascript></script>
+<script type="text/javascript" src="{Wesambo::STATICS}/artDialog/jquery.artDialog.js?skin=default"></script>
+<script type="text/javascript" src="{Wesambo::STATICS}/artDialog/plugins/iframeTools.js"></script>
+</head>
+<body class="showmenu">
+<table width="100%" height="100%" border=0 cellpadding="0" cellSpacing=0>
+  <tr>
+    <td><div id="header">
+	<div class="top">
+    	<a href="/" class="logo" title="首页">首页</a>
+		 <div class="login">
+			<li>您好：<b>{Wesambo:$Think.session.username}</b> ，欢迎使用{Wesambo::C('site_name')}！</li>	
+			<li><a href="{Wesambo::C('site_url')}" target="_blank"> 访问首页</a></li>
+			<li><a href="{Wesambo::U('User/Index/index')}" target="_blank">用户中心</a></li>
+			<li><a href="#">官方论坛</a></li>
+			<li><a href="{Wesambo::U('Admin/logout')}">[退出]</a></li>
+		</div>
+
+      
+    </div>
+    <div class="tm">
+    	<ul>
+			<volist name="nav" id="nav_val">
+        	<li class="nav" id="link{Wesambo:$nav_val['id']}">
+			<a href="#" onClick="JumpleftFrame('{Wesambo::U('System/menu',array('pid'=>$nav_val['id'],'level'=>2,'title'=>rawurlencode
+($nav_val['title'])))}',{Wesambo:$nav_val['id']});">{Wesambo:$nav_val['title']}</a></li>
+			</volist>
+        </ul>
+    </div>
+<div class="topnav">
+    	<p><a href="javascript:void(0)" id="togglemenu">隐藏菜单</a></div>
+        <div class="fr">
+        	<a href="#">官方论坛</a>
+        	<a href="#">在线帮助</a>
+        </div>
+    </div>
+    <i class="tico"></i>
+</div></td>
+  </tr>
+  <tr>
+    <td height="100%" bgcolor="#ffffff"><table width="100%" height="100%" cellpadding="0" cellSpacing=0 border=0 borderColor="#ff0000">
+        <tbody>
+          <tr>
+            <td noWrap id="frmTitle" bgcolor="#ff0000" width="213" height="100%" valign="top"><IFRAME frameBorder="0" id="left" name="left" scrolling="auto" src="{Wesambo::U('System/menu')}" style="VISIBILITY:inherit;width:200px;Z-INDEX:2; height:550px;" allowtransparency="true"></IFRAME></td>
+            <td></td>
+            <td width="100%"><table height="100%" cellSpacing=0 cellPadding=0 width="100%" align="right" border=0>
+                <tbody>
+                  <tr>
+                    <td align=right><IFRAME id="main" name="main" style="width: 100%; HEIGHT: 550px" src="{Wesambo::U('System/main')}" frameBorder=0></IFRAME></td>
+                  </tr>
+                </tbody>
+              </table></td>
+          </tr>
+        </tbody>
+      </table></td>
+  </tr>
+  <tr>
+    <td>
+		<div id="footer">
+			<p class="copy"> Copyright &copy; 2014 WesamboTM(Wesambo)版权所有</p>
+		</div>
+	</td>
+  </tr>
+</table>
+</body>
+</html>

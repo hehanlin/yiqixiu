@@ -1,0 +1,51 @@
+<include file='Public:header'/>
+
+<div id="content">
+  
+  <div class="container">
+    
+    <div class="row">
+      
+      <include file="Public:left" />
+        
+      <div class="span9">
+
+        <div class="widget widget-table">
+                    
+          <div class="widget-header">
+            <i class="icon-th-list"></i>
+            <h3>扩展管理 >> 文章管理 >> 文章列表</h3>
+          </div> <!-- /widget-header -->
+          
+          <div class="widget-content">
+            <include file="Site:public" />
+            <table class="table table-striped table-bordered table-hover table-condensed">
+  <tbody><tr>
+    <th>编号</th>
+    <th>标题</th>
+    <th>操作</th>
+  </tr>
+  <volist name='data' id='vo'>
+  <tr>
+    <td>{Wesambo:$vo.id}</td>
+    <td>{Wesambo:$vo.title}</td>
+    <td><a href="{Wesambo::U('edit',array('id'=>$vo['id']))}" class="btn btn-success" style="margin-right:10px;">编辑</a><a href="#" class="btn btn-danger" onclick="javascript:if(confirm('该操作不可恢复，确定删除吗？')){window.location.href='{Wesambo::U('del',array('id'=>$vo['id']))}'}">删除</a></td>
+  </tr>
+</volist>
+
+</tbody></table>
+          
+          </div> <!-- /widget-content -->
+   {Wesambo:$show}       
+        </div> <!-- /widget -->
+      
+      </div> <!-- /span9 -->
+      
+      
+    </div> <!-- /row -->
+    
+  </div> <!-- /container -->
+  
+</div> <!-- /content -->
+
+<include file='Public:footer'/>
